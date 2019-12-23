@@ -15,6 +15,14 @@ export default function cart(state = [], action) {
           });
         }
       });
+    case 'REMOVE_FROM_CART':
+      return produce(state, draft => {
+        const produtIndex = draft.findIndex(p => p.id === action.id);
+
+        if (produtIndex >= 0) {
+          draft.splice(produtIndex, 1);
+        }
+      });
     default:
       return state;
   }
